@@ -127,7 +127,7 @@ install_hook_name(selinux_android_setcontext, int, uid_t uid, bool isSystemServe
 }
 
 install_hook_name(android_os_Process_setArgV0, void, JNIEnv *env, jobject obj, jstring arg) {
-    LOGD("android_os_Process_setArgV0 %s", arg);
+    //LOGD("android_os_Process_setArgV0 %s", arg);
     orig_android_os_Process_setArgV0(env, obj, arg);
     const char *pkgName = env->GetStringUTFChars(arg, nullptr);
     if (need_inject_pkg != nullptr && need_inject_so != nullptr && strcmp(pkgName, need_inject_pkg) == 0) {
